@@ -1,0 +1,12 @@
+[
+{"cmd":"teleport","x":1000.5,"y":60.0,"z":-2000.5},
+{"cmd":"run","seconds":3.0},
+{"cmd":"press","key":"F"},
+{"cmd":"hold","key":"Space"},
+{"cmd":"run","seconds":4.0},
+{"cmd":"release","key":"Space"},
+{"cmd":"look","yaw":0.0,"pitch":0.0},
+{"cmd":"hold","key":"W"},
+{"cmd":"run","seconds":10.0},
+{"cmd":"release","key":"W"}
+]

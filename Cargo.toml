@@ -1,0 +1,60 @@
+[workspace]
+resolver = "2"
+members = ["crates/core", "crates/render", "crates/app"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+publish = false
+
+# Lint-group entries carry priority -1 so they apply first and the flat
+# entries below override them; cargo ignores table order otherwise.
+[workspace.lints.rust]
+warnings = { level = "deny", priority = -1 }
+rust_2018_idioms = { level = "deny", priority = -1 }
+unsafe_code = "forbid"
+non_ascii_idents = "forbid"
+missing_docs = "deny"
+unreachable_pub = "deny"
+
+[workspace.lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }
+nursery = { level = "deny", priority = -1 }
+cargo = { level = "deny", priority = -1 }
+# Duplicated-version reporting belongs to cargo-deny (supply chain), not clippy.
+multiple_crate_versions = "allow"
+
+# Restriction lints chosen for production Rust; see AGENTS.md for the policy.
+dbg_macro = "deny"
+expect_used = "deny"
+panic = "deny"
+print_stderr = "deny"
+print_stdout = "deny"
+todo = "deny"
+unimplemented = "deny"
+unwrap_used = "deny"
+
+# Voxel grid math intentionally narrows between world-space i32 and f32 physics;
+# every cast site is bounded by construction (see generation/ and player.rs).
+cast_possible_truncation = "allow"
+cast_possible_wrap = "allow"
+cast_precision_loss = "allow"
+cast_sign_loss = "allow"
+
+# fma-style rewrites change bit-exact results and cost more than plain mul/add
+# on typical targets; deterministic simple ops are a feature of this sim.
+imprecise_flops = "allow"
+suboptimal_flops = "allow"
+
+# Input snapshots, block flags, and grid math are genuinely boolean/short-named;
+# renaming to satisfy the lint would obscure domain shapes.
+must_use_candidate = "allow"
+struct_excessive_bools = "allow"
+many_single_char_names = "allow"
+
+# unreachable_pub (rustc) and this lint contradict each other in bin crates:
+# cross-module items need pub(crate), plain pub would trip unreachable_pub.
+# unreachable_pub stays the authority; this nursery variant is noise here.
+redundant_pub_crate = "allow"

@@ -1,0 +1,17 @@
+[
+{"cmd":"run","seconds":1.0},
+{"cmd":"look","yaw":0.0,"pitch":-0.2},
+{"cmd":"hold","key":"W"},
+{"cmd":"tick","n":45},
+{"cmd":"release","key":"W"},
+{"cmd":"look","yaw":0.0,"pitch":-0.9},
+{"cmd":"press","key":"3"},
+{"cmd":"tick","n":1},
+{"cmd":"mouse","button":"right"},
+{"cmd":"tick","n":1},
+{"cmd":"look","yaw":0.0,"pitch":-1.5},
+{"cmd":"mouse","button":"left"},
+{"cmd":"tick","n":50},
+{"cmd":"mouse_release","button":"left"},
+{"cmd":"tick","n":1}
+]

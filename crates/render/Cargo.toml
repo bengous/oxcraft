@@ -1,0 +1,21 @@
+[package]
+name = "ox-render"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license = "MIT"
+description = "wgpu renderer for oxcraft: sky, terrain, water, outline and UI pipelines."
+
+[dependencies]
+ox-core = { path = "../core" }
+wgpu = "29"
+bytemuck = { version = "1", features = ["derive"] }
+glam = "0.33"
+winit = "0.30"
+raw-window-handle = "0.6.2"
+font8x8 = { version = "0.3.1", default-features = false, features = ["unicode"] }
+image = { version = "0.25.10", default-features = false, features = ["png"] }
+
+[lints]
+workspace = true

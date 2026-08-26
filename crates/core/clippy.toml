@@ -1,0 +1,20 @@
+# Clippy reads the nearest clippy.toml only, so the test allowances from the
+# workspace file are repeated here.
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true
+allow-dbg-in-tests = true
+
+disallowed-types = [
+  { path = "std::time::Instant", reason = "core takes time as a value from the caller (docs/adr/0001)" },
+  { path = "std::time::SystemTime", reason = "core takes time as a value from the caller (docs/adr/0001)" },
+]
+disallowed-methods = [
+  { path = "std::env::var", reason = "core reads no environment (docs/adr/0001)" },
+  { path = "std::env::args", reason = "core reads no environment (docs/adr/0001)" },
+  { path = "std::fs::read", reason = "core does no IO (docs/adr/0001)" },
+  { path = "std::fs::write", reason = "core does no IO (docs/adr/0001)" },
+  { path = "std::fs::File::open", reason = "core does no IO (docs/adr/0001)" },
+  { path = "std::fs::File::create", reason = "core does no IO (docs/adr/0001)" },
+  { path = "std::thread::spawn", reason = "core is single-threaded; callers parallelize (docs/adr/0001)" },
+  { path = "std::process::exit", reason = "core returns values, never exits (docs/adr/0001)" },
+]

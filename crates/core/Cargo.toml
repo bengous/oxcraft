@@ -1,0 +1,13 @@
+[package]
+name = "ox-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license = "MIT"
+description = "Pure simulation layer for oxcraft: blocks, generation, meshing, physics."
+
+[dependencies]
+
+[lints]
+workspace = true
